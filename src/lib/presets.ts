@@ -1,0 +1,151 @@
+export type Preset = {
+  slug: string;
+  name: string;
+  description: string;
+  category: "photo" | "signature";
+  width: number;
+  height: number;
+  maxKB: number;
+  dpi: number;
+  format: "jpeg";
+  bgColor: string;
+};
+
+export const presets: Preset[] = [
+  {
+    slug: "aadhaar",
+    name: "Aadhaar Card",
+    description: "35mm × 45mm • 350×450 px",
+    category: "photo",
+    width: 350,
+    height: 450,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "pan-nsdl",
+    name: "PAN Card (NSDL)",
+    description: "25mm × 35mm • 197×276 px",
+    category: "photo",
+    width: 197,
+    height: 276,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "pan-uti",
+    name: "PAN Card (UTI)",
+    description: "25mm × 35mm • 197×276 px",
+    category: "photo",
+    width: 197,
+    height: 276,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "passport",
+    name: "Indian Passport",
+    description: "51mm × 51mm • 600×600 px",
+    category: "photo",
+    width: 600,
+    height: 600,
+    maxKB: 300,
+    dpi: 300,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "voter-id",
+    name: "Voter ID (EPIC)",
+    description: "25mm × 29mm • 200×230 px",
+    category: "photo",
+    width: 200,
+    height: 230,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "driving-license",
+    name: "Driving License",
+    description: "25mm × 29mm • 200×230 px",
+    category: "photo",
+    width: 200,
+    height: 230,
+    maxKB: 100,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "ssc-exam",
+    name: "SSC Exam Form",
+    description: "25mm × 29mm • 200×230 px",
+    category: "photo",
+    width: 200,
+    height: 230,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "railway-exam",
+    name: "Railway (RRB) Exam",
+    description: "25mm × 29mm • 200×230 px",
+    category: "photo",
+    width: 200,
+    height: 230,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "upsc",
+    name: "UPSC Exam",
+    description: "25mm × 29mm • 200×230 px",
+    category: "photo",
+    width: 200,
+    height: 230,
+    maxKB: 40,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "ssc-signature",
+    name: "SSC Signature",
+    description: "50mm × 23mm • 400×180 px",
+    category: "signature",
+    width: 400,
+    height: 180,
+    maxKB: 30,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+  {
+    slug: "pan-signature",
+    name: "PAN Signature",
+    description: "45mm × 20mm • 354×157 px",
+    category: "signature",
+    width: 354,
+    height: 157,
+    maxKB: 50,
+    dpi: 200,
+    format: "jpeg",
+    bgColor: "#FFFFFF",
+  },
+];
+
+export function getPresetBySlug(slug: string): Preset | undefined {
+  return presets.find((p) => p.slug === slug);
+}
