@@ -95,7 +95,7 @@ export default function AadhaarGuidePage() {
             Aadhaar Card Photo Size Requirements 2026
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ensure your Aadhaar enrollment or update isn't rejected. Use our free, 
+            Ensure your Aadhaar enrollment or update isn&apos;t rejected. Use our free,
             instant, private tool to resize your image to exact UIDAI specifications.
           </p>
         </section>
@@ -133,14 +133,14 @@ export default function AadhaarGuidePage() {
 
           <h2>Common Rejection Reasons</h2>
           <ul>
-            <li><strong>Dark or busy backgrounds:</strong> The UIDAI requires a totally plain, clean background. (Our tool's AI background removal fixes this instantly!).</li>
+            <li><strong>Dark or busy backgrounds:</strong> The UIDAI requires a totally plain, clean background. (Our tool&apos;s AI background removal fixes this instantly!).</li>
             <li><strong>File size too large:</strong> The portal will spit back a hard error if your image is over 50 KB.</li>
             <li><strong>Blurry face:</strong> Your face should cover 70-80% of the entire frame frame, with both ears clearly visible.</li>
             <li><strong>Wearing glasses with glare:</strong> If you must wear glasses, ensure there are no reflections blinding your eyes. Tinted lenses and sunglasses are strictly prohibited.</li>
           </ul>
 
           <h2>Aadhaar vs PAN vs Passport — Size Comparison</h2>
-          <p>It's easy to get confused between India's different document requirements. Here is a quick cheat sheet:</p>
+          <p>It&apos;s easy to get confused between India&apos;s different document requirements. Here is a quick cheat sheet:</p>
           <div className="overflow-x-auto not-prose my-6">
             <table className="min-w-full border-collapse border border-gray-200 text-sm">
               <thead className="bg-gray-100">
@@ -178,7 +178,7 @@ export default function AadhaarGuidePage() {
           <ol>
             <li>Find a room with good, even, natural lighting (facing a window is best).</li>
             <li>Have a friend or family member take the photo from chest up using a smartphone. Do not take a selfie to avoid lens distortion.</li>
-            <li>Don't worry about the background! You can stand anywhere.</li>
+            <li>Don&apos;t worry about the background! You can stand anywhere.</li>
             <li>Upload the photo to the <strong>PhotoSarkari tool above</strong>. Our system will automatically remove the background, replace it with pure white, and crop you to the perfect 3.5x4.5cm ratio.</li>
           </ol>
 

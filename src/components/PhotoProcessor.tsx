@@ -204,7 +204,7 @@ export default function PhotoProcessor({ preset }: Props) {
       // Center horizontally
       let cx = (fx + fw / 2) - targetW / 2;
       // Headroom: strict ~ 18% above face
-      let headroom = mode === "strict" ? targetH * 0.18 : targetH * 0.25;
+      const headroom = mode === "strict" ? targetH * 0.18 : targetH * 0.25;
       let cy = fy - headroom;
 
       // Clamp
@@ -715,13 +715,6 @@ export default function PhotoProcessor({ preset }: Props) {
     return null;
   })();
 
-  const faceStatusContent = (() => {
-    if (faceStatus === "idle" || faceStatus === "error") return null;
-    if (faceStatus === "loading") return { type: "info" as const, msg: "Detecting face…" };
-    if (faceStatus === "detected") return { type: "success" as const, msg: "Face detected ✓ — Crop auto-centered" };
-    if (faceStatus === "not-found") return { type: "warn" as const, msg: "No face detected — adjust crop manually" };
-    return null;
-  })();
 
   // ─── Render ───────────────────────────────────────────────────────────────────
 
