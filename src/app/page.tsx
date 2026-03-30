@@ -123,6 +123,13 @@ export default function Home() {
               { href: "/guide/pan-card-photo-resize", title: "PAN Card Photo & Signature", desc: "197×276 px photo + 354×157 px signature — NSDL/UTI specs" },
               { href: "/guide/passport-photo-size-india", title: "Indian Passport Photo", desc: "600×600 px square, max 300KB — MEA & Passport Seva specs" },
               { href: "/guide/ssc-photo-resize", title: "SSC Exam Photo & Signature", desc: "200×230 px photo + 400×180 px sig — CGL, CHSL, MTS, GD" },
+              { href: "/guide/neet-photo-resize", title: "NEET Photo Size", desc: "200×230 px, max 200KB — NTA specs, no spectacles allowed" },
+              { href: "/guide/jee-main-photo-resize", title: "JEE Main Photo Size", desc: "200×230 px, max 200KB — NTA specs for JEE Main & Advanced" },
+              { href: "/guide/voter-id-photo-size", title: "Voter ID (EPIC) Photo Size", desc: "200×230 px, max 50KB — NVSP portal specs" },
+              { href: "/guide/driving-license-photo-size", title: "Driving Licence Photo Size", desc: "200×230 px, max 100KB — Sarathi portal specs" },
+              { href: "/guide/ibps-bank-photo-resize", title: "IBPS & Bank Exam Photo", desc: "200×230 px, max 100KB — IBPS PO, Clerk, RRB, SBI specs" },
+              { href: "/guide/upsc-photo-resize", title: "UPSC Exam Photo Size", desc: "200×230 px, max 40KB — IAS, IPS, Civil Services specs" },
+              { href: "/guide/railway-rrb-photo-resize", title: "Railway (RRB) Photo Size", desc: "200×230 px, max 50KB — RRB NTPC, Group D, ALP specs" },
             ].map((guide) => (
               <Link key={guide.href} href={guide.href} className="group block">
                 <div className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-md transition-all hover:-translate-y-1 h-full">
