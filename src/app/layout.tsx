@@ -39,16 +39,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
+        <Providers>{children}</Providers>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9229787243154059"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-      </head>
-      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
-        <Providers>{children}</Providers>
       </body>
     </html>
   );
