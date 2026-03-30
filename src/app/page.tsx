@@ -19,7 +19,9 @@ export default function Home() {
           <div className="flex justify-end mb-3">
             <LanguageSwitcher />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight">{t("siteName")}</h1>
+          <h1 className="flex justify-center mb-1">
+            <img src="/logo.svg" alt="PhotoSarkari" className="h-11" />
+          </h1>
           <p className="mt-2 text-blue-200 text-base">
             {t("siteTagline")} &nbsp;·&nbsp;{" "}
             <span className="font-devanagari">{t("siteSubtag")}</span>
