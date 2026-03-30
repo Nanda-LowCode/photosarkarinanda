@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPresetBySlug, presets } from "@/lib/presets";
 import PhotoProcessor from "@/components/PhotoProcessor";
+import PresetSelector from "@/components/PresetSelector";
 
 type Props = {
   params: { slug: string };
@@ -15,9 +16,24 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const preset = getPresetBySlug(params.slug);
   if (!preset) return {};
+  const title = `${preset.name} Photo Size | PhotoSarkari`;
+  const description = `Resize your photo for ${preset.name} — ${preset.description}, max ${preset.maxKB}KB. Free, instant, no upload required.`;
+  const url = `https://photosarkari.com/tool/${preset.slug}`;
   return {
-    title: `${preset.name} Photo Size | PhotoSarkari`,
-    description: `Resize your photo for ${preset.name} — ${preset.description}, max ${preset.maxKB}KB. Free, instant, no upload required.`,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
@@ -49,36 +65,13 @@ export default function ToolPage({ params }: Props) {
             </svg>
             All Tools
           </Link>
-          <h1 className="text-2xl font-bold">{preset.name}</h1>
+          <div className="mb-2">
+            <PresetSelector currentSlug={preset.slug} presets={presets} />
+          </div>
+          <h1 className="sr-only">{preset.name} Photo Size — Free Resize Tool</h1>
           <p className="text-blue-200 text-sm mt-1">{preset.description}</p>
         </div>
       </header>
-
-      {/* Specs bar */}
-      <div className="bg-white border-b border-gray-200 py-3 px-4">
-        <div className="max-w-2xl mx-auto flex flex-wrap gap-4 text-sm text-gray-600">
-          <span>
-            <span className="font-semibold text-gray-800">Size:</span>{" "}
-            {preset.width} × {preset.height} px
-          </span>
-          <span>
-            <span className="font-semibold text-gray-800">Max:</span>{" "}
-            {preset.maxKB} KB
-          </span>
-          <span>
-            <span className="font-semibold text-gray-800">DPI:</span>{" "}
-            {preset.dpi}
-          </span>
-          <span>
-            <span className="font-semibold text-gray-800">Format:</span>{" "}
-            JPEG
-          </span>
-          <span>
-            <span className="font-semibold text-gray-800">Background:</span>{" "}
-            White
-          </span>
-        </div>
-      </div>
 
       {/* Main */}
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-8">
