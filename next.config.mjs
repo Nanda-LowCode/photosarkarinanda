@@ -38,11 +38,16 @@ const nextConfig = {
     // onnxruntime-web ships .js files that use import.meta.url to locate WASM.
     // Webpack treats them as CommonJS (no import.meta allowed) by default.
     // Fix: mark as javascript/auto + explicitly enable importMeta parsing.
+    // onnxruntime-web uses import.meta.url to locate WASM files at runtime.
+    // Its bundle has no top-level import/export so webpack auto-detects it as
+    // CommonJS, where import.meta is forbidden. Forcing "javascript/esm" makes
+    // webpack properly transform import.meta.url into a runtime chunk URL.
+    // The require() guards in the file use typeof-checks and are dead code in
+    // browser context, so treating the file as ESM is safe.
     config.module.rules.push({
       test: /\.js$/,
       include: /node_modules[/\\]onnxruntime-web/,
-      type: "javascript/auto",
-      parser: { importMeta: true },
+      type: "javascript/esm",
       resolve: { fullySpecified: false },
     });
 
