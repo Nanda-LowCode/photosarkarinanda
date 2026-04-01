@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "SSC Photo & Signature Size 2026 — Resize to 20KB Free | PhotoSarkari",
   description:
     "SSC exam photo size is 200×230 pixels, max 50KB. SSC signature is 400×180 px, max 30KB. Free online tool to resize and compress instantly.",
-  alternates: { canonical: "https://photosarkari.com/guide/ssc-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/ssc-photo-resize" },
   openGraph: {
     title: "SSC Photo & Signature Size 2026 — Resize to 20KB Free",
     description: "SSC exam photo size is 200×230 pixels, max 50KB. SSC signature is 400×180 px, max 30KB. Free online tool to resize and compress instantly.",
-    url: "https://photosarkari.com/guide/ssc-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/ssc-photo-resize",
     type: "article",
   },
   twitter: {

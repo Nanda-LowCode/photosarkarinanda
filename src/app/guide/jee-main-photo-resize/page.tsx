@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "JEE Main Photo Size 2026 — Exact Specs & Free Resize Tool | PhotoSarkari",
   description:
     "JEE Main photo size is 200×230 pixels, max 200KB, JPEG with white background. Free tool to resize and compress your JEE Main NTA photo instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/jee-main-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/jee-main-photo-resize" },
   openGraph: {
     title: "JEE Main Photo Size 2026 — Exact Specs & Free Resize Tool",
     description: "JEE Main photo size is 200×230 pixels, max 200KB, JPEG. Free tool to resize and compress instantly.",
-    url: "https://photosarkarinanda.vercel.app/guide/jee-main-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/jee-main-photo-resize",
     type: "article",
   },
   twitter: {

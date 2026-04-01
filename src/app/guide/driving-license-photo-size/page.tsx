@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Driving Licence Photo Size 2026 — Sarathi Portal Specs & Free Resize | PhotoSarkari",
   description:
     "Driving Licence photo size for Sarathi portal is 200×230 pixels, max 100KB, JPEG. Free tool to resize and compress your driving licence photo instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/driving-license-photo-size" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/driving-license-photo-size" },
   openGraph: {
     title: "Driving Licence Photo Size 2026 — Sarathi Portal Specs & Free Resize",
     description: "Driving Licence photo size is 200×230 pixels, max 100KB, JPEG. Free tool to resize instantly.",
-    url: "https://photosarkarinanda.vercel.app/guide/driving-license-photo-size",
+    url: "https://photosarkari.vercel.app/guide/driving-license-photo-size",
     type: "article",
   },
   twitter: {

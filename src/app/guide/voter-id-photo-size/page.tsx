@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Voter ID Photo Size 2026 — EPIC Card Specs & Free Resize | PhotoSarkari",
   description:
     "Voter ID (EPIC) photo size is 200×230 pixels, max 50KB, JPEG. Free tool to resize and compress your Voter ID photo for NVSP registration instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/voter-id-photo-size" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/voter-id-photo-size" },
   openGraph: {
     title: "Voter ID Photo Size 2026 — EPIC Card Specs & Free Resize",
     description: "Voter ID (EPIC) photo size is 200×230 pixels, max 50KB, JPEG. Free tool to resize instantly.",
-    url: "https://photosarkarinanda.vercel.app/guide/voter-id-photo-size",
+    url: "https://photosarkari.vercel.app/guide/voter-id-photo-size",
     type: "article",
   },
   twitter: {

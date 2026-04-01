@@ -5,11 +5,11 @@ import AadhaarMerger from "@/components/AadhaarMerger";
 export const metadata: Metadata = {
   title: "Merge Aadhaar Card Front & Back PDF | PhotoSarkari",
   description: "Securely combine the front and back scans of your Aadhaar Card into a single A4 PDF, perfectly formatted for PAN card application uploads. Free and 100% private.",
-  alternates: { canonical: "https://photosarkari.com/tool/aadhaar-merger" },
+  alternates: { canonical: "https://photosarkari.vercel.app/tool/aadhaar-merger" },
   openGraph: {
     title: "Merge Aadhaar Card Front & Back PDF | PhotoSarkari",
     description: "Securely combine the front and back scans of your Aadhaar Card into a single A4 PDF. Free and 100% private — no server upload.",
-    url: "https://photosarkari.com/tool/aadhaar-merger",
+    url: "https://photosarkari.vercel.app/tool/aadhaar-merger",
     type: "website",
   },
   twitter: {

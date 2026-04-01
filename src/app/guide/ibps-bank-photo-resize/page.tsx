@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "IBPS & Bank Exam Photo Size 2026 — Exact Specs & Free Resize | PhotoSarkari",
   description:
     "IBPS PO, Clerk & Bank exam photo size is 200×230 pixels, max 100KB, JPEG. Free tool to resize and compress your bank exam photo instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/ibps-bank-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/ibps-bank-photo-resize" },
   openGraph: {
     title: "IBPS & Bank Exam Photo Size 2026 — Exact Specs & Free Resize",
     description: "IBPS PO, Clerk & Bank exam photo size is 200×230 pixels, max 100KB, JPEG. Free tool to resize instantly.",
-    url: "https://photosarkarinanda.vercel.app/guide/ibps-bank-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/ibps-bank-photo-resize",
     type: "article",
   },
   twitter: {

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Indian Passport Photo Size 2026 — Exact Specs & Free Resize Tool | PhotoSarkari",
   description:
     "Indian passport photo size is 51×51 mm (600×600 pixels), max 300KB in JPEG. Free online tool to resize and compress your passport photo instantly.",
-  alternates: { canonical: "https://photosarkari.com/guide/passport-photo-size-india" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/passport-photo-size-india" },
   openGraph: {
     title: "Indian Passport Photo Size 2026 — Exact Specs & Free Resize Tool",
     description: "Indian passport photo size is 51×51 mm (600×600 pixels), max 300KB in JPEG. Free online tool to resize and compress your passport photo instantly.",
-    url: "https://photosarkari.com/guide/passport-photo-size-india",
+    url: "https://photosarkari.vercel.app/guide/passport-photo-size-india",
     type: "article",
   },
   twitter: {

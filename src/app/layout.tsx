@@ -6,7 +6,7 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://photosarkari.com"),
+  metadataBase: new URL("https://photosarkari.vercel.app"),
   title: "PhotoSarkari — Free Indian ID Photo Resizer | Aadhaar, PAN, Passport",
   description:
     "Resize your photo for Aadhaar, PAN Card, Passport, Voter ID, Driving License, SSC, UPSC, Railway exams — free, instant, no upload. Works offline on any device.",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description:
       "Free tool to resize photos for all Indian government IDs and exam forms. No upload, works offline.",
     type: "website",
-    url: "https://photosarkari.com",
+    url: "https://photosarkari.vercel.app",
     siteName: "PhotoSarkari",
   },
   twitter: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "Free tool to resize photos for Aadhaar, PAN, Passport, Voter ID, SSC, UPSC and more. No upload, works offline.",
   },
   alternates: {
-    canonical: "https://photosarkari.com",
+    canonical: "https://photosarkari.vercel.app",
   },
 };
 

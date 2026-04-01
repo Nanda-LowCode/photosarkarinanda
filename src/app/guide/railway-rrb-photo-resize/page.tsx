@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Railway RRB Photo Size 2026 — NTPC, Group D, ALP Specs & Free Resize | PhotoSarkari",
   description:
     "Railway RRB exam photo size is 200×230 pixels, max 50KB, JPEG with white background. Free tool to resize and compress your Railway exam photo for RRB NTPC, Group D, ALP instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/railway-rrb-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/railway-rrb-photo-resize" },
   openGraph: {
     title: "Railway RRB Photo Size 2026 — NTPC, Group D, ALP Specs & Free Resize",
     description: "Railway RRB photo is 200×230 px, max 50KB JPEG. Free instant resize tool for RRB NTPC, Group D, ALP.",
-    url: "https://photosarkarinanda.vercel.app/guide/railway-rrb-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/railway-rrb-photo-resize",
     type: "article",
   },
   twitter: {

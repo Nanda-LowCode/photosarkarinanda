@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "NEET Photo Size 2026 — Exact Specs & Free Resize Tool | PhotoSarkari",
   description:
     "NEET UG photo size is 200×230 pixels, max 200KB, JPEG. Signature is 200×80 px, max 30KB. Free tool to resize and compress your NEET NTA photo instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/neet-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/neet-photo-resize" },
   openGraph: {
     title: "NEET Photo Size 2026 — Exact Specs & Free Resize Tool",
     description: "NEET UG photo size is 200×230 pixels, max 200KB, JPEG. Free tool to resize and compress instantly.",
-    url: "https://photosarkarinanda.vercel.app/guide/neet-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/neet-photo-resize",
     type: "article",
   },
   twitter: {

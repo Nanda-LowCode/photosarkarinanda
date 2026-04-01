@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "Aadhaar Card Photo Size 2026 — Exact Pixels, KB & Free Resize Tool | PhotoSarkari",
   description:
     "Aadhaar card photo size is 3.5×4.5 cm (350×450 pixels) at 200 DPI, max 50KB in JPEG. Free online tool to resize your Aadhaar photo instantly.",
-  alternates: { canonical: "https://photosarkari.com/guide/aadhaar-photo-size" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/aadhaar-photo-size" },
   openGraph: {
     title: "Aadhaar Card Photo Size 2026 — Exact Pixels, KB & Free Resize Tool",
     description: "Aadhaar card photo size is 3.5×4.5 cm (350×450 pixels) at 200 DPI, max 50KB in JPEG. Free online tool to resize your Aadhaar photo instantly.",
-    url: "https://photosarkari.com/guide/aadhaar-photo-size",
+    url: "https://photosarkari.vercel.app/guide/aadhaar-photo-size",
     type: "article",
   },
   twitter: {

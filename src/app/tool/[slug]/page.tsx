@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!preset) return {};
   const title = `${preset.name} Photo Size | PhotoSarkari`;
   const description = `Resize your photo for ${preset.name} — ${preset.description}, max ${preset.maxKB}KB. Free, instant, no upload required.`;
-  const url = `https://photosarkari.com/tool/${preset.slug}`;
+  const url = `https://photosarkari.vercel.app/tool/${preset.slug}`;
   return {
     title,
     description,

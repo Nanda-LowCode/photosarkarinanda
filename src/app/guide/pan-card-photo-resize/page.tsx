@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "PAN Card Photo & Signature Size 2026 — Free Resize Tool | PhotoSarkari",
   description:
     "PAN card photo size is 25×35 mm (197×276 pixels), max 50KB JPEG. PAN signature is 45×20 mm (354×157 px), max 50KB. Free instant resize tool.",
-  alternates: { canonical: "https://photosarkari.com/guide/pan-card-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/pan-card-photo-resize" },
   openGraph: {
     title: "PAN Card Photo & Signature Size 2026 — Free Resize Tool",
     description: "PAN card photo size is 25×35 mm (197×276 pixels), max 50KB JPEG. PAN signature is 45×20 mm (354×157 px), max 50KB. Free instant resize tool.",
-    url: "https://photosarkari.com/guide/pan-card-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/pan-card-photo-resize",
     type: "article",
   },
   twitter: {

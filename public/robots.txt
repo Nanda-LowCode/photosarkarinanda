@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /models/
 
-Sitemap: https://photosarkari.com/sitemap.xml
+Sitemap: https://photosarkari.vercel.app/sitemap.xml

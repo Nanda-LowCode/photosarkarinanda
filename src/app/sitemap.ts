@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { presets } from "@/lib/presets";
 
-const BASE_URL = "https://photosarkarinanda.vercel.app";
+const BASE_URL = "https://photosarkari.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const toolPages: MetadataRoute.Sitemap = presets.map((preset) => ({

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "UPSC Photo Size 2026 — Civil Services Exam Specs & Free Resize | PhotoSarkari",
   description:
     "UPSC Civil Services (IAS/IPS) photo size is 200×230 pixels, max 40KB, JPEG with white background. Free tool to resize and compress your UPSC photo instantly.",
-  alternates: { canonical: "https://photosarkarinanda.vercel.app/guide/upsc-photo-resize" },
+  alternates: { canonical: "https://photosarkari.vercel.app/guide/upsc-photo-resize" },
   openGraph: {
     title: "UPSC Photo Size 2026 — Civil Services Exam Specs & Free Resize",
     description: "UPSC Civil Services photo is 200×230 px, max 40KB JPEG. Free instant resize tool.",
-    url: "https://photosarkarinanda.vercel.app/guide/upsc-photo-resize",
+    url: "https://photosarkari.vercel.app/guide/upsc-photo-resize",
     type: "article",
   },
   twitter: {
