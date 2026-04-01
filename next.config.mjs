@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // Correct key for Next.js 14.2 — prevents bundling WASM packages server-side
-    serverComponentsExternalPackages: ["@imgly/background-removal", "onnxruntime-web"],
-  },
+  // Prevents bundling WASM packages server-side (moved from experimental in Next.js 15)
+  serverExternalPackages: ["@imgly/background-removal", "onnxruntime-web"],
 
   // Required for @imgly/background-removal: enables SharedArrayBuffer
   // (used by onnxruntime-web for WASM multi-threading)

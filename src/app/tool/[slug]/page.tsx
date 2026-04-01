@@ -6,7 +6,7 @@ import PhotoProcessor from "@/components/PhotoProcessor";
 import PresetSelector from "@/components/PresetSelector";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const preset = getPresetBySlug(params.slug);
+  const { slug } = await params;
+  const preset = getPresetBySlug(slug);
   if (!preset) return {};
   const title = `${preset.name} Photo Size | PhotoSarkari`;
   const description = `Resize your photo for ${preset.name} — ${preset.description}, max ${preset.maxKB}KB. Free, instant, no upload required.`;
@@ -37,8 +38,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ToolPage({ params }: Props) {
-  const preset = getPresetBySlug(params.slug);
+export default async function ToolPage({ params }: Props) {
+  const { slug } = await params;
+  const preset = getPresetBySlug(slug);
   if (!preset) notFound();
 
   return (

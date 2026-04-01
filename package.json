@@ -13,9 +13,10 @@
     "@tailwindcss/typography": "^0.5.19",
     "face-api.js": "^0.22.2",
     "jspdf": "^4.2.1",
-    "next": "14.2.35",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^15.5.14",
+    "onnxruntime-web": "^1.21.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",
