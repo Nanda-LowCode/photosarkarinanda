@@ -35,7 +35,7 @@ export default function PhotoProcessor({ preset }: Props) {
   const [outputKB, setOutputKB] = useState<number | null>(null);
   const [hasImage, setHasImage] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [complianceIssues, setComplianceIssues] = useState<ComplianceIssue[] | null>(null);
+  const [, setComplianceIssues] = useState<ComplianceIssue[] | null>(null);
   const [finalBlobUrl, setFinalBlobUrl] = useState<string | null>(null);
 
   // AI background removal
@@ -57,7 +57,7 @@ export default function PhotoProcessor({ preset }: Props) {
   const [faceStatus, setFaceStatus] = useState<FaceStatus>("idle");
   const faceModelLoaded = useRef(false);
   const faceBoxRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
-  const [cropMode, setCropMode] = useState<CropMode>("strict");
+  const [, setCropMode] = useState<CropMode>("strict");
 
   // Print sheet data URL (set after each successful download)
   const lastDataUrlRef = useRef<string | null>(null);
