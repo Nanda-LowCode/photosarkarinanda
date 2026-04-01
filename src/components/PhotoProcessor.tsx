@@ -867,23 +867,6 @@ export default function PhotoProcessor({ preset }: Props) {
           />
         </div>
 
-        {/* Quick Action Zoom Buttons */}
-        {hasImage && !aiWorking && !faceWorking && (
-          <div className="flex flex-wrap gap-2 justify-center mt-2 mb-2">
-            <button
-              onClick={() => applySmartCrop("full")}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${cropMode === "full" ? "bg-amber-100 text-amber-800 border-amber-300" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}
-            >
-              Fit Width
-            </button>
-            <button
-              onClick={() => applySmartCrop("pad")}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${cropMode === "pad" ? "bg-indigo-100 text-indigo-800 border-indigo-300" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}
-            >
-              Zoom Out (Add Padding)
-            </button>
-          </div>
-        )}
 
         {/* Download success */}
         {outputKB !== null && (
@@ -928,31 +911,6 @@ export default function PhotoProcessor({ preset }: Props) {
 
         {/* Action buttons */}
         <div className="flex flex-col gap-3">
-          {/* Compliance Report */}
-          {complianceIssues && (
-            <div className="bg-white border rounded-xl overflow-hidden shadow-sm mb-1">
-              <div className="bg-gray-50 border-b px-4 py-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-gray-700">Pre-Download Checks</span>
-                <span className="text-xs text-gray-500">Auto-Analyzed</span>
-              </div>
-              <div className="p-3 flex flex-col gap-2">
-                {complianceIssues.map((issue, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    {issue.severity === "success" && <span className="text-green-600 font-bold">✓</span>}
-                    {issue.severity === "warning" && <span className="text-amber-500 font-bold">⚠️</span>}
-                    {issue.severity === "error" && <span className="text-red-500 font-bold">✗</span>}
-                    <span className={`text-sm ${
-                      issue.severity === "success" ? "text-green-700" :
-                      issue.severity === "warning" ? "text-amber-700" : "text-red-700 font-medium"
-                    }`}>
-                      {issue.message}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           <div className="flex gap-3">
             {!finalBlobUrl ? (
               <button
@@ -966,16 +924,15 @@ export default function PhotoProcessor({ preset }: Props) {
                   ? "AI Working..."
                   : faceWorking
                   ? "Detecting Face..."
-                  : "Run Compliance Check"}
+                  : "Download Photo"}
               </button>
             ) : (
               <button
                 onClick={triggerDownload}
-                disabled={complianceIssues?.some(i => i.severity === "error")}
-                className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                Download Approved Media
+                Download Photo
               </button>
             )}
             <button
