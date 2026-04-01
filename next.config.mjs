@@ -53,11 +53,14 @@ const nextConfig = {
     // They have no top-level import/export so webpack auto-detects them as
     // CommonJS where import.meta is forbidden. Force javascript/esm so webpack
     // transforms import.meta.url into a proper runtime chunk URL.
+    // parser.javascript.url:false stops webpack from intercepting new URL("resources.json", ...)
+    // calls inside @imgly and replacing string args with chunk objects (causing e.replace errors).
     config.module.rules.push({
       test: /\.(js|mjs)$/,
       include: /node_modules[/\\](onnxruntime-web|@imgly)/,
       type: "javascript/esm",
       resolve: { fullySpecified: false },
+      parser: { javascript: { url: false } },
     });
 
     return config;
