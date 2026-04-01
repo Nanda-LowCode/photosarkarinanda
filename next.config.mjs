@@ -1,3 +1,6 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Prevents bundling WASM packages server-side (moved from experimental in Next.js 15)
@@ -47,18 +50,27 @@ const nextConfig = {
       });
     }
 
-    // onnxruntime-web ships .js files that also use import.meta.url.
-    // They have no top-level import/export so webpack auto-detects them as
-    // CommonJS where import.meta is forbidden. Force javascript/esm so webpack
-    // transforms import.meta.url into a proper runtime chunk URL.
-    // parser.javascript.url:false stops webpack from intercepting new URL("resources.json", ...)
-    // calls inside @imgly and replacing string args with chunk objects (causing e.replace errors).
+    // onnxruntime-web's ort.bundle.min.mjs uses new URL("ort.bundle.min.mjs", import.meta.url)
+    // to self-locate for pthread worker spawning. Webpack resolves this as a circular reference
+    // (module exports ≠ URL string), so new URL(moduleObject) throws "e.replace is not a function".
+    // Since @imgly always overrides ort.env.wasm.wasmPaths with CDN blob URLs, we patch the
+    // self-referential new URL(...) to (void 0) so the broken code path is never reached.
+    config.module.rules.push({
+      test: /ort\.bundle\.min\.mjs$/,
+      include: /node_modules[\\/]onnxruntime-web/,
+      use: [
+        {
+          loader: require("path").resolve("./loaders/ort-patch-loader.js"),
+        },
+      ],
+    });
+
+    // Force ESM type so import.meta.url is available in onnxruntime-web / @imgly.
     config.module.rules.push({
       test: /\.(js|mjs)$/,
-      include: /node_modules[/\\](onnxruntime-web|@imgly)/,
+      include: /node_modules[\\/](onnxruntime-web|@imgly)/,
       type: "javascript/esm",
       resolve: { fullySpecified: false },
-      parser: { javascript: { url: false } },
     });
 
     return config;
