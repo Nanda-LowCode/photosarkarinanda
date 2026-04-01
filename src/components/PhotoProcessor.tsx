@@ -614,8 +614,15 @@ export default function PhotoProcessor({ preset }: Props) {
 
       lastDataUrlRef.current = out.toDataURL("image/jpeg", 0.92);
       setOutputKB(finalKB);
-      setFinalBlobUrl(URL.createObjectURL(blob));
+      const blobUrl = URL.createObjectURL(blob);
+      setFinalBlobUrl(blobUrl);
       setComplianceIssues(issues);
+
+      // Auto-download immediately — user should not need a second click
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = `${preset.slug}-${preset.category}.jpeg`;
+      a.click();
 
     } catch (err) {
       setErrorMsg("Processing failed. Please try again.");
@@ -912,29 +919,22 @@ export default function PhotoProcessor({ preset }: Props) {
         {/* Action buttons */}
         <div className="flex flex-col gap-3">
           <div className="flex gap-3">
-            {!finalBlobUrl ? (
-              <button
-                onClick={handleProcess}
-                disabled={!canProcess}
-                className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base"
-              >
-                {isProcessing
-                  ? "Analyzing..."
-                  : aiWorking
-                  ? "AI Working..."
-                  : faceWorking
-                  ? "Detecting Face..."
-                  : "Download Photo"}
-              </button>
-            ) : (
-              <button
-                onClick={triggerDownload}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                Download Photo
-              </button>
-            )}
+            <button
+              onClick={finalBlobUrl ? triggerDownload : handleProcess}
+              disabled={!canProcess}
+              className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              {isProcessing
+                ? "Analyzing..."
+                : aiWorking
+                ? "AI Working..."
+                : faceWorking
+                ? "Detecting Face..."
+                : finalBlobUrl
+                ? "Download Again"
+                : "Download Photo"}
+            </button>
             <button
               onClick={handleReset}
               className="px-4 py-3 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors text-sm"
