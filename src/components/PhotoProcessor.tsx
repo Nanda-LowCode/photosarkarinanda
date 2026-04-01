@@ -290,7 +290,7 @@ export default function PhotoProcessor({ preset }: Props) {
         setBgStatus("removing");
 
         const transparentBlob = await removeBackground(file, {
-          publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/",
+          publicPath: "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/",
         });
         const bitmap = await createImageBitmap(transparentBlob);
 
