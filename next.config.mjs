@@ -55,7 +55,7 @@ const nextConfig = {
     // transforms import.meta.url into a proper runtime chunk URL.
     config.module.rules.push({
       test: /\.(js|mjs)$/,
-      include: /node_modules[/\\]onnxruntime-web/,
+      include: /node_modules[/\\](onnxruntime-web|@imgly)/,
       type: "javascript/esm",
       resolve: { fullySpecified: false },
     });
