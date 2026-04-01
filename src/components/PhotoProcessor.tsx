@@ -289,7 +289,9 @@ export default function PhotoProcessor({ preset }: Props) {
         const { removeBackground } = await import("@imgly/background-removal");
         setBgStatus("removing");
 
-        const transparentBlob = await removeBackground(file);
+        const transparentBlob = await removeBackground(file, {
+          publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/",
+        });
         const bitmap = await createImageBitmap(transparentBlob);
 
         // Validate the model detected a subject (not an all-transparent result)
