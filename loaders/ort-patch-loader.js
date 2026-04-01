@@ -17,14 +17,19 @@ module.exports = function ortPatchLoader(source) {
   // Original: new URL("ort.bundle.min.mjs",import.meta.url)
   // Replacement: (void 0) — evaluates to undefined, making Ve=undefined
   // so the pathname computation is skipped, and wasmPaths from @imgly takes over.
+  // Replace the broken self-referential URL with globalThis.location.
+  // - Avoids "e.replace is not a function" (no module object passed to new URL)
+  // - Avoids "Cannot read properties of undefined (reading 'href')" (location has .href)
+  // - Safe because @imgly always overrides ort.env.wasm.wasmPaths with CDN URLs,
+  //   so the self-URL is never actually used for WASM path resolution.
   const patched = source
     .replace(
       /new URL\("ort\.bundle\.min\.mjs",import\.meta\.url\)/g,
-      '(void 0)'
+      '(globalThis.location||{href:""})'
     )
     .replace(
       /new URL\('ort\.bundle\.min\.mjs',import\.meta\.url\)/g,
-      '(void 0)'
+      '(globalThis.location||{href:""})'
     );
 
   return patched;
