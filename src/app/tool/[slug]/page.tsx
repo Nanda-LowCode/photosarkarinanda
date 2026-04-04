@@ -44,26 +44,17 @@ export default async function ToolPage({ params }: Props) {
   if (!preset) notFound();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       {/* Header */}
-      <header className="bg-blue-800 text-white py-5 px-4">
-        <div className="max-w-2xl mx-auto">
+      <header className="hero-pattern relative" style={{ background: "linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%)" }}>
+        <div className="max-w-2xl mx-auto px-4 pt-4 pb-5">
           <Link
             href="/"
-            className="text-blue-300 hover:text-white text-sm flex items-center gap-1 mb-3 transition-colors"
+            className="text-sm flex items-center gap-1.5 mb-4 transition-colors"
+            style={{ color: "rgba(255,255,255,0.5)" }}
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             All Tools
           </Link>
@@ -71,8 +62,9 @@ export default async function ToolPage({ params }: Props) {
             <PresetSelector currentSlug={preset.slug} presets={presets} />
           </div>
           <h1 className="sr-only">{preset.name} Photo Size — Free Resize Tool</h1>
-          <p className="text-blue-200 text-sm mt-1">{preset.description}</p>
+          <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>{preset.description}</p>
         </div>
+        <div className="saffron-line" />
       </header>
 
       {/* Main */}
@@ -80,34 +72,49 @@ export default async function ToolPage({ params }: Props) {
         <PhotoProcessor preset={preset} />
 
         {/* Tips */}
-        <div className="mt-8 bg-blue-50 border border-blue-100 rounded-xl p-5">
-          <h2 className="text-sm font-semibold text-blue-900 mb-2">
+        <div className="mt-8 rounded-[var(--radius)] p-5"
+             style={{ background: "var(--surface)", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+          <h2 className="text-sm font-bold mb-2.5"
+              style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             Tips for a good {preset.category === "photo" ? "photo" : "signature"}
           </h2>
           {preset.category === "photo" ? (
-            <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
-              <li>Use a plain white or light background</li>
-              <li>Face should be clearly visible and centered</li>
-              <li>No sunglasses, caps, or head covers (unless religious)</li>
-              <li>Eyes open and looking at camera</li>
-              <li>Neutral expression with mouth closed</li>
+            <ul className="text-sm space-y-1.5 list-none" style={{ color: "var(--text-secondary)" }}>
+              {[
+                "Use a plain white or light background",
+                "Face should be clearly visible and centered",
+                "No sunglasses, caps, or head covers (unless religious)",
+                "Eyes open and looking at camera",
+                "Neutral expression with mouth closed",
+              ].map((tip, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span style={{ color: "var(--saffron)" }} className="flex-shrink-0 mt-0.5">&#x2713;</span>
+                  {tip}
+                </li>
+              ))}
             </ul>
           ) : (
-            <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
-              <li>Sign on plain white paper with black/blue pen</li>
-              <li>Scan or photograph on a flat, well-lit surface</li>
-              <li>Avoid shadows or creases in the paper</li>
-              <li>Crop tightly around the signature</li>
+            <ul className="text-sm space-y-1.5 list-none" style={{ color: "var(--text-secondary)" }}>
+              {[
+                "Sign on plain white paper with black/blue pen",
+                "Scan or photograph on a flat, well-lit surface",
+                "Avoid shadows or creases in the paper",
+                "Crop tightly around the signature",
+              ].map((tip, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span style={{ color: "var(--saffron)" }} className="flex-shrink-0 mt-0.5">&#x2713;</span>
+                  {tip}
+                </li>
+              ))}
             </ul>
           )}
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-4 px-4 text-center">
-        <p className="text-xs text-gray-400">
-          100% Free &nbsp;•&nbsp; No Upload to Server &nbsp;•&nbsp; Made in
-          India 🇮🇳
+      <footer className="border-t py-4 px-4 text-center" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+        <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+          100% Free &nbsp;&middot;&nbsp; No Upload to Server &nbsp;&middot;&nbsp; Made in India
         </p>
       </footer>
     </div>

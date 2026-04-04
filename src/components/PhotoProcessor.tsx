@@ -638,28 +638,26 @@ export default function PhotoProcessor({ preset }: Props) {
   return (
     <div className="max-w-lg mx-auto">
       {/* Target Specs Card */}
-      <div className="mb-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-xl p-4 shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div>
-          <h2 className="text-sm font-bold text-gray-800 mb-1">Target Requirements</h2>
-          <div className="flex flex-wrap gap-2 text-xs text-gray-600">
-            <span className="bg-white border rounded px-2 py-1 shadow-sm">
-              Dimensions: <strong className="text-blue-700">{preset.width} × {preset.height} px</strong>
-            </span>
-            <span className="bg-white border rounded px-2 py-1 shadow-sm">
-              File Size: <strong className="text-green-700">Max {preset.maxKB} KB</strong>
-            </span>
-            <span className="bg-white border rounded px-2 py-1 shadow-sm">Format: JPEG</span>
-          </div>
+      <div className="mb-4 rounded-[var(--radius)] p-4"
+           style={{ background: "var(--surface)", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+        <h2 className="text-xs font-bold mb-2" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>Target Requirements</h2>
+        <div className="flex flex-wrap gap-2 text-xs">
+          <span className="rounded-lg px-2.5 py-1 font-medium" style={{ background: "var(--saffron-glow)", color: "var(--saffron)" }}>
+            {preset.width} × {preset.height} px
+          </span>
+          <span className="rounded-lg px-2.5 py-1 font-medium" style={{ background: "var(--green-soft)", color: "var(--green)" }}>
+            Max {preset.maxKB} KB
+          </span>
+          <span className="rounded-lg px-2.5 py-1 font-medium" style={{ background: "#f0f0f5", color: "var(--text-secondary)" }}>JPEG</span>
         </div>
-
-
       </div>
 
       {preset.category === "signature" && (
-        <div className="mb-4 bg-white border border-gray-200 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+        <div className="mb-4 rounded-[var(--radius)] px-4 py-3 flex items-center justify-between gap-3"
+             style={{ background: "var(--surface)", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
           <div>
-            <p className="text-sm font-semibold text-gray-800">🪄 Clean Signature (High Contrast)</p>
-            <p className="text-xs text-gray-500 mt-0.5">
+            <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Clean Signature (High Contrast)</p>
+            <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
               Removes paper shadows and makes ink crisp for portals
             </p>
           </div>
@@ -667,9 +665,10 @@ export default function PhotoProcessor({ preset }: Props) {
             role="switch"
             aria-checked={isCleanSignature}
             onClick={() => { setIsCleanSignature((v) => !v); setFinalBlobUrl(null); }}
-            className={`relative flex-shrink-0 w-11 h-6 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
-              isCleanSignature ? "bg-purple-600" : "bg-gray-300"
+            className={`relative flex-shrink-0 w-11 h-6 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 ${
+              isCleanSignature ? "" : "bg-gray-300"
             }`}
+            style={isCleanSignature ? { background: "var(--saffron)" } : undefined}
           >
             <span
               className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
@@ -687,25 +686,28 @@ export default function PhotoProcessor({ preset }: Props) {
           onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
           onDragLeave={() => setIsDragging(false)}
           onClick={() => fileInputRef.current?.click()}
-          className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-colors ${
-            isDragging
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50"
-          }`}
+          className="border-2 border-dashed rounded-[var(--radius)] p-10 text-center cursor-pointer transition-all"
+          style={{
+            borderColor: isDragging ? "var(--saffron)" : "rgba(0,0,0,0.12)",
+            background: isDragging ? "var(--saffron-glow)" : "var(--surface)",
+          }}
         >
           <div className="flex flex-col items-center gap-3">
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                 style={{ background: "var(--saffron-glow)" }}>
+              <svg className="w-7 h-7" style={{ color: "var(--saffron)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
             <div>
-              <p className="font-semibold text-gray-700">
+              <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
                 {preset.category === "signature" ? "Upload Signature Photo" : "Drop your photo here"}
               </p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
                 {preset.category === "signature" ? "Sign on blank white paper & snap a clear photo" : "or click to browse from your device"}
               </p>
             </div>
-            <p className="text-xs text-gray-400">JPG, PNG, WEBP supported</p>
+            <p className="text-[11px]" style={{ color: "var(--text-muted)" }}>JPG, PNG, WEBP supported</p>
           </div>
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
         </div>
@@ -744,24 +746,18 @@ export default function PhotoProcessor({ preset }: Props) {
 
         {/* Before / After toggle */}
         {bgStatus === "ready" && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 p-0.5 rounded-full" style={{ background: "#f0f0f5" }}>
             <button
               onClick={showProcessed}
-              className={`text-xs px-3 py-1.5 rounded-full border font-medium transition-colors ${
-                !showingOriginal
-                  ? "bg-blue-700 text-white border-blue-700"
-                  : "text-gray-600 border-gray-300 hover:bg-gray-50"
-              }`}
+              className="text-xs px-3 py-1.5 rounded-full font-medium transition-all"
+              style={!showingOriginal ? { background: "var(--navy)", color: "white" } : { color: "var(--text-muted)" }}
             >
               Background Removed
             </button>
             <button
               onClick={showOriginal}
-              className={`text-xs px-3 py-1.5 rounded-full border font-medium transition-colors ${
-                showingOriginal
-                  ? "bg-gray-700 text-white border-gray-700"
-                  : "text-gray-600 border-gray-300 hover:bg-gray-50"
-              }`}
+              className="text-xs px-3 py-1.5 rounded-full font-medium transition-all"
+              style={showingOriginal ? { background: "var(--navy)", color: "white" } : { color: "var(--text-muted)" }}
             >
               Original
             </button>
@@ -769,8 +765,8 @@ export default function PhotoProcessor({ preset }: Props) {
         )}
 
         {/* Canvas */}
-        <div className="bg-gray-100 rounded-xl p-3 flex flex-col items-center">
-          <p className="text-xs text-gray-500 mb-2 text-center">
+        <div className="rounded-[var(--radius)] p-3 flex flex-col items-center" style={{ background: "#f0f0f5" }}>
+          <p className="text-xs mb-2 text-center" style={{ color: "var(--text-muted)" }}>
             {aiWorking || faceWorking
               ? "Processing your photo…"
               : "Drag the highlighted area to adjust the crop"}
@@ -785,11 +781,12 @@ export default function PhotoProcessor({ preset }: Props) {
 
         {/* Download success */}
         {outputKB !== null && (
-          <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-4 py-2">
-            <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 rounded-lg px-4 py-2.5"
+               style={{ background: "var(--green-soft)", border: "1px solid rgba(13,148,101,0.15)" }}>
+            <svg className="w-4 h-4 flex-shrink-0" style={{ color: "var(--green)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
-            <p className="text-sm text-green-700">
+            <p className="text-sm" style={{ color: "var(--green)" }}>
               Downloaded!{" "}
               <span className="font-semibold">{outputKB} KB</span>{" "}
               (max {preset.maxKB} KB)
@@ -799,17 +796,21 @@ export default function PhotoProcessor({ preset }: Props) {
 
         {/* Phase 3: Print sheet — photo presets only, appears after first successful download */}
         {preset.category === "photo" && outputKB !== null && (
-          <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
-            <p className="text-sm font-semibold text-gray-700 mb-0.5">Generate Print Sheet (PDF)</p>
-            <p className="text-xs text-gray-500 mb-3">
-              4R paper (4×6 in) with cutting guides • Take to any print shop — ₹5–10
+          <div className="rounded-[var(--radius)] px-4 py-3"
+               style={{ background: "var(--surface)", border: "1px solid var(--border)", boxShadow: "var(--shadow-card)" }}>
+            <p className="text-sm font-bold mb-0.5" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
+              Generate Print Sheet (PDF)
+            </p>
+            <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
+              4R paper (4×6 in) with cutting guides &middot; Take to any print shop
             </p>
             <div className="flex gap-2">
               {([4, 6, 8] as const).map((n) => (
                 <button
                   key={n}
                   onClick={() => handlePrintSheet(n)}
-                  className="flex-1 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-white hover:border-blue-500 hover:text-blue-700 transition-colors"
+                  className="flex-1 py-2 rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5"
+                  style={{ border: "1px solid var(--border)", color: "var(--text-secondary)", background: "var(--surface)" }}
                 >
                   {n} photos
                 </button>
@@ -819,41 +820,41 @@ export default function PhotoProcessor({ preset }: Props) {
         )}
 
         {errorMsg && (
-          <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-2">
-            <p className="text-sm text-red-700">{errorMsg}</p>
+          <div className="rounded-lg px-4 py-2.5" style={{ background: "#fef2f2", border: "1px solid rgba(220,38,38,0.15)" }}>
+            <p className="text-sm" style={{ color: "#dc2626" }}>{errorMsg}</p>
           </div>
         )}
 
         {/* Action buttons */}
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-3">
-            <button
-              onClick={finalBlobUrl ? triggerDownload : handleProcess}
-              disabled={!canProcess}
-              className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
-            >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              {isProcessing
-                ? "Analyzing..."
-                : aiWorking
-                ? "AI Working..."
-                : faceWorking
-                ? "Detecting Face..."
-                : finalBlobUrl
-                ? "Download Again"
-                : "Download Photo"}
-            </button>
-            <button
-              onClick={handleReset}
-              className="px-4 py-3 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors text-sm"
-            >
-              Change
-            </button>
-          </div>
+        <div className="flex gap-3">
+          <button
+            onClick={finalBlobUrl ? triggerDownload : handleProcess}
+            disabled={!canProcess}
+            className="flex-1 text-white font-semibold py-3 px-6 rounded-xl transition-all text-base flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ background: finalBlobUrl ? "var(--green)" : "var(--saffron)", fontFamily: "var(--font-heading)" }}
+          >
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            {isProcessing
+              ? "Analyzing..."
+              : aiWorking
+              ? "AI Working..."
+              : faceWorking
+              ? "Detecting Face..."
+              : finalBlobUrl
+              ? "Download Again"
+              : "Download Photo"}
+          </button>
+          <button
+            onClick={handleReset}
+            className="px-4 py-3 rounded-xl text-sm font-medium transition-colors"
+            style={{ border: "1px solid var(--border)", color: "var(--text-secondary)", background: "var(--surface)" }}
+          >
+            Change
+          </button>
         </div>
 
-        <p className="text-xs text-gray-400 text-center">
-          Final: {preset.width}×{preset.height} px • max {preset.maxKB} KB • JPEG
+        <p className="text-[11px] text-center" style={{ color: "var(--text-muted)" }}>
+          Final: {preset.width}×{preset.height} px &middot; max {preset.maxKB} KB &middot; JPEG
         </p>
       </div>
     </div>

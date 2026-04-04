@@ -21,27 +21,28 @@ export const metadata: Metadata = {
 
 export default function AadhaarMergerPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       {/* Header */}
-      <header className="bg-blue-800 text-white py-5 px-4 shadow-sm">
-        <div className="max-w-5xl mx-auto">
+      <header className="hero-pattern relative" style={{ background: "linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%)" }}>
+        <div className="max-w-5xl mx-auto px-4 pt-4 pb-5">
           <Link
             href="/"
-            className="text-blue-300 hover:text-white text-sm flex items-center gap-1 mb-2 transition-colors"
+            className="text-sm flex items-center gap-1.5 mb-3 transition-colors"
+            style={{ color: "rgba(255,255,255,0.5)" }}
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             All Tools
           </Link>
-          <h1 className="text-2xl font-bold">Document Utilities</h1>
-          <p className="text-blue-200 text-sm mt-1">Free tools for managing government document uploads securely.</p>
+          <h1 className="text-2xl font-bold text-white" style={{ fontFamily: "var(--font-heading)" }}>
+            Document Utilities
+          </h1>
+          <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
+            Free tools for managing government document uploads securely.
+          </p>
         </div>
+        <div className="saffron-line" />
       </header>
 
       {/* Main Content */}
@@ -50,11 +51,11 @@ export default function AadhaarMergerPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-6 px-4">
-        <div className="max-w-5xl mx-auto text-center text-sm text-gray-500">
-          <p className="font-semibold text-gray-700">PhotoSarkari Document Utilities</p>
-          <p className="mt-1">
-            100% Free &nbsp;•&nbsp; No Server Uploads &nbsp;•&nbsp; Data stays on your device
+      <footer className="border-t py-5 px-4" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-xs font-medium" style={{ color: "var(--text-secondary)" }}>PhotoSarkari Document Utilities</p>
+          <p className="text-[11px] mt-1" style={{ color: "var(--text-muted)" }}>
+            100% Free &middot; No Server Uploads &middot; Data stays on your device
           </p>
         </div>
       </footer>

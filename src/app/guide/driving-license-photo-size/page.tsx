@@ -75,16 +75,16 @@ export default function DrivingLicenseGuidePage() {
   if (!dlPreset) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       <Script
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <header className="bg-blue-800 text-white py-5 px-4 shadow-sm">
+      <header className="hero-pattern relative" style={{ background: "linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%)" }}><div className="saffron-line absolute bottom-0 left-0 right-0" />
         <div className="max-w-4xl mx-auto flex items-center">
-          <Link href="/" className="text-blue-200 hover:text-white flex items-center gap-2 transition-colors font-semibold">
+          <Link href="/" className="text-sm flex items-center gap-2 transition-colors font-medium py-4" style={{ color: "rgba(255,255,255,0.5)" }}>
             ← Back to PhotoSarkari
           </Link>
         </div>
@@ -93,7 +93,7 @@ export default function DrivingLicenseGuidePage() {
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-8 flex flex-col gap-10">
 
         <section className="text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             Driving Licence Photo Size Requirements 2026
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -112,7 +112,7 @@ export default function DrivingLicenseGuidePage() {
           </div>
         </section>
 
-        <article className="prose prose-blue prose-lg max-w-none bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+        <article className="prose prose-lg max-w-none p-8 rounded-[var(--radius)]" style={{ background: "var(--surface)", boxShadow: "var(--shadow-card)", border: "1px solid var(--border)" }}>
 
           <h2>Driving Licence Photo Requirements (Sarathi Portal)</h2>
           <p>
@@ -210,27 +210,27 @@ export default function DrivingLicenseGuidePage() {
         </section>
       </main>
 
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 mt-8">
+      <footer className="py-10 px-4 mt-8" style={{ background: "var(--navy)", color: "rgba(255,255,255,0.45)" }}>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">PhotoSarkari</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>PhotoSarkari</h4>
             <p>100% Client-side. Fast, private, zero-upload tool for Indian standard document photo sizing.</p>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">Top Guides</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>Top Guides</h4>
             <ul className="space-y-2">
-              <li><Link href="/guide/driving-license-photo-size" className="hover:text-white transition-colors">Driving Licence Photo Size</Link></li>
-              <li><Link href="/guide/voter-id-photo-size" className="hover:text-white transition-colors">Voter ID Photo Size</Link></li>
-              <li><Link href="/guide/aadhaar-photo-size" className="hover:text-white transition-colors">Aadhaar Photo Size</Link></li>
-              <li><Link href="/guide/passport-photo-size-india" className="hover:text-white transition-colors">Passport Photo Size</Link></li>
+              <li><Link href="/guide/driving-license-photo-size" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Driving Licence Photo Size</Link></li>
+              <li><Link href="/guide/voter-id-photo-size" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Voter ID Photo Size</Link></li>
+              <li><Link href="/guide/aadhaar-photo-size" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Aadhaar Photo Size</Link></li>
+              <li><Link href="/guide/passport-photo-size-india" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Passport Photo Size</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">Tools</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>Tools</h4>
             <ul className="space-y-2">
-              <li><Link href="/tool/driving-license" className="hover:text-white transition-colors">Driving Licence Photo Resizer</Link></li>
-              <li><Link href="/tool/voter-id" className="hover:text-white transition-colors">Voter ID Photo Resizer</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">All Tools</Link></li>
+              <li><Link href="/tool/driving-license" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Driving Licence Photo Resizer</Link></li>
+              <li><Link href="/tool/voter-id" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Voter ID Photo Resizer</Link></li>
+              <li><Link href="/" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>All Tools</Link></li>
             </ul>
           </div>
         </div>

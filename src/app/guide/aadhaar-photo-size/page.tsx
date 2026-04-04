@@ -67,7 +67,7 @@ export default function AadhaarGuidePage() {
   if (!aadhaarPreset) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -75,11 +75,11 @@ export default function AadhaarGuidePage() {
       />
       
       {/* Header */}
-      <header className="bg-blue-800 text-white py-5 px-4 shadow-sm">
+      <header className="hero-pattern relative" style={{ background: "linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%)" }}><div className="saffron-line absolute bottom-0 left-0 right-0" />
         <div className="max-w-4xl mx-auto flex items-center">
           <Link
             href="/"
-            className="text-blue-200 hover:text-white flex items-center gap-2 transition-colors font-semibold"
+            className="text-sm flex items-center gap-2 transition-colors font-medium py-4" style={{ color: "rgba(255,255,255,0.5)" }}
           >
             ← Back to PhotoSarkari
           </Link>
@@ -91,7 +91,7 @@ export default function AadhaarGuidePage() {
         
         {/* Intro Section */}
         <section className="text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight" style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}>
             Aadhaar Card Photo Size Requirements 2026
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -101,8 +101,8 @@ export default function AadhaarGuidePage() {
         </section>
 
         {/* The Processor Component */}
-        <section className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transform transition-all hover:shadow-md">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 text-center">
+        <section className="rounded-[var(--radius)] overflow-hidden transition-all" style={{ background: "var(--surface)", boxShadow: "var(--shadow-card)", border: "1px solid var(--border)" }}>
+          <div className="p-4 text-center" style={{ background: "linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)" }}>
             <h2 className="text-xl font-bold text-white">Free Aadhaar Photo Resizer Tool</h2>
             <p className="text-blue-100 text-sm mt-1">Upload any photo below to auto-resize and compress to 50KB.</p>
           </div>
@@ -112,7 +112,7 @@ export default function AadhaarGuidePage() {
         </section>
 
         {/* Content Body - Markdown styled */}
-        <article className="prose prose-blue prose-lg max-w-none bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+        <article className="prose prose-lg max-w-none p-8 rounded-[var(--radius)]" style={{ background: "var(--surface)", boxShadow: "var(--shadow-card)", border: "1px solid var(--border)" }}>
           
           <h2>Complete Specification Guide</h2>
           <p>
@@ -214,26 +214,26 @@ export default function AadhaarGuidePage() {
       </main>
 
       {/* Footer / Internal Links Base */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 mt-8">
+      <footer className="py-10 px-4 mt-8" style={{ background: "var(--navy)", color: "rgba(255,255,255,0.45)" }}>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">PhotoSarkari</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>PhotoSarkari</h4>
             <p>100% Client-side. Fast, private, zero-upload tool for Indian standard document photo sizing.</p>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">Top Guides</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>Top Guides</h4>
             <ul className="space-y-2">
-              <li><Link href="/guide/aadhaar-photo-size" className="hover:text-white transition-colors">Aadhaar Photo Size</Link></li>
-              <li><Link href="/guide/pan-card-photo-resize" className="hover:text-white transition-colors">PAN Card Photo Resizer</Link></li>
-              <li><Link href="/guide/passport-photo-size-india" className="hover:text-white transition-colors">Indian Passport Specs</Link></li>
+              <li><Link href="/guide/aadhaar-photo-size" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Aadhaar Photo Size</Link></li>
+              <li><Link href="/guide/pan-card-photo-resize" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>PAN Card Photo Resizer</Link></li>
+              <li><Link href="/guide/passport-photo-size-india" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Indian Passport Specs</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-4 uppercase tracking-wider">Tools</h4>
+            <h4 className="font-bold mb-4 uppercase tracking-wider text-sm" style={{ color: "var(--saffron-light)" }}>Tools</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-white transition-colors">Main Resize Tool</Link></li>
-              <li><Link href="/utilities" className="hover:text-white transition-colors">Aadhaar PDF Merger</Link></li>
-              <li><Link href="/signature" className="hover:text-white transition-colors">Clean Signature Tool</Link></li>
+              <li><Link href="/" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Main Resize Tool</Link></li>
+              <li><Link href="/utilities" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Aadhaar PDF Merger</Link></li>
+              <li><Link href="/signature" className="transition-colors" style={{ color: "rgba(255,255,255,0.45)" }}>Clean Signature Tool</Link></li>
             </ul>
           </div>
         </div>
