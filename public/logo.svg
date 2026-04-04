@@ -1,21 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 182 38">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 38">
   <!-- Camera body -->
   <rect x="0" y="9" width="28" height="21" rx="3.5" fill="white"/>
   <!-- Viewfinder bump -->
   <rect x="9" y="4" width="10" height="6" rx="2" fill="white"/>
-  <!-- Lens outer (blue = header bg, creates depth) -->
-  <circle cx="14" cy="19.5" r="7" fill="#1e40af"/>
-  <!-- Lens ring -->
+  <!-- Lens outer ring -->
+  <circle cx="14" cy="19.5" r="7" fill="#e87e24"/>
+  <!-- Lens mid ring -->
   <circle cx="14" cy="19.5" r="5" fill="white"/>
-  <!-- Lens center -->
-  <circle cx="14" cy="19.5" r="2.5" fill="#1e40af"/>
-  <!-- Flash indicator -->
-  <circle cx="23.5" cy="13" r="1.5" fill="#bfdbfe"/>
+  <!-- Lens core -->
+  <circle cx="14" cy="19.5" r="2.5" fill="#e87e24"/>
+  <!-- Flash dot -->
+  <circle cx="23.5" cy="13" r="1.5" fill="#f5a623" opacity="0.7"/>
 
-  <!-- "Photo" bold white + "Sarkari" lighter blue -->
-  <text x="37" y="26"
-    font-family="system-ui,-apple-system,Helvetica Neue,Arial,sans-serif"
-    font-size="20"
-    font-weight="700"
-    fill="white">Photo<tspan fill="#bfdbfe" font-weight="400">Sarkari</tspan></text>
+  <!-- "Photo" bold white + "Sarkari" saffron -->
+  <text x="37" y="26.5"
+    font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
+    font-size="21"
+    font-weight="800"
+    fill="white"
+    letter-spacing="-0.5">Photo<tspan fill="#f5a623" font-weight="500">Sarkari</tspan></text>
 </svg>

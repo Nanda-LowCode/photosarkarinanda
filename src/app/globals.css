@@ -3,14 +3,135 @@
 @tailwind utilities;
 
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
+  --navy: #0c1425;
+  --navy-mid: #162032;
+  --navy-light: #1e2d47;
+  --saffron: #e87e24;
+  --saffron-light: #f5a623;
+  --saffron-glow: rgba(232, 126, 36, 0.15);
+  --cream: #fdf8f2;
+  --cream-dark: #f5ede3;
+  --surface: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a72;
+  --text-muted: #8e8ea0;
+  --green: #0d9465;
+  --green-soft: #e8f5ee;
+  --blue-link: #2563eb;
+  --border: rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --radius: 14px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-primary);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Dot grid pattern for hero */
+.hero-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Saffron accent line */
+.saffron-line {
+  height: 3px;
+  background: linear-gradient(90deg, var(--saffron), var(--saffron-light), transparent);
+}
+
+/* Section accent bar */
+.section-bar {
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Card left-border accent */
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--saffron);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card-accent:hover::before {
+  opacity: 1;
+}
+
+/* Trust badge pill */
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.85);
+}
+.trust-pill svg {
+  width: 14px;
+  height: 14px;
+  color: var(--saffron-light);
+  flex-shrink: 0;
+}
+
+/* Staggered entrance animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+.delay-4 { animation-delay: 0.2s; }
+.delay-5 { animation-delay: 0.25s; }
+.delay-6 { animation-delay: 0.3s; }
+
+/* Guide card line hover */
+.guide-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.guide-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Step counter */
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: var(--navy);
+  color: var(--saffron-light);
+  border: 2px solid var(--navy-light);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
 
 @layer utilities {
   .text-balance {

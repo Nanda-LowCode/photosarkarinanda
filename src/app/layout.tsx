@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const body = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const heading = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://photosarkari.vercel.app"),
@@ -46,7 +56,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
+      <body className={`${body.variable} ${heading.variable} font-sans antialiased`}
+            style={{ fontFamily: "var(--font-body)" }}>
         <Providers>{children}</Providers>
       </body>
     </html>

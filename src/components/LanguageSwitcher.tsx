@@ -7,19 +7,20 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs text-gray-400">{t("langLabel")}</span>
-      <div className="flex bg-gray-100 rounded-full p-0.5 border border-gray-200">
+      <span className="text-[11px] opacity-50">{t("langLabel")}</span>
+      <div className="flex rounded-full p-0.5" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)" }}>
         {(["en", "hi"] as Locale[]).map((lang) => (
           <button
             key={lang}
             onClick={() => setLocale(lang)}
             className={`px-3 py-1 text-xs font-medium rounded-full transition-all ${
               locale === lang
-                ? "bg-blue-700 text-white shadow-sm"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-white shadow-sm"
+                : "text-white/50 hover:text-white/80"
             }`}
+            style={locale === lang ? { background: "var(--saffron)" } : undefined}
           >
-            {lang === "en" ? "English" : "हिन्दी"}
+            {lang === "en" ? "EN" : "HI"}
           </button>
         ))}
       </div>

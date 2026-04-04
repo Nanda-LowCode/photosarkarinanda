@@ -6,31 +6,41 @@ type Props = {
 };
 
 export default function DocumentCard({ preset }: Props) {
+  const isPhoto = preset.category === "photo";
+
   return (
     <Link href={`/tool/${preset.slug}`} className="block group">
-      <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 group-hover:-translate-y-0.5">
-        <div className="flex items-start justify-between mb-3">
-          <div
-            className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-              preset.category === "photo"
-                ? "bg-blue-50 text-blue-700"
-                : "bg-amber-50 text-amber-700"
-            }`}
+      <div className="card-accent bg-white rounded-[var(--radius)] p-4 sm:p-5 transition-all duration-200 group-hover:-translate-y-0.5"
+           style={{ boxShadow: "var(--shadow-card)", border: "1px solid var(--border)" }}>
+        <div className="flex items-start justify-between mb-2.5">
+          <span
+            className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
+            style={{
+              background: isPhoto ? "var(--saffron-glow)" : "rgba(139, 92, 246, 0.1)",
+              color: isPhoto ? "var(--saffron)" : "#7c3aed",
+            }}
           >
-            {preset.category === "photo" ? "Photo" : "Signature"}
-          </div>
-          <span className="text-xs text-gray-400">max {preset.maxKB} KB</span>
+            {isPhoto ? "Photo" : "Signature"}
+          </span>
+          <span className="text-[10px] font-medium" style={{ color: "var(--text-muted)" }}>
+            {preset.maxKB} KB
+          </span>
         </div>
 
-        <h3 className="font-semibold text-gray-900 text-base mb-1 group-hover:text-blue-800 transition-colors">
+        <h3
+          className="font-semibold text-[15px] leading-snug mb-1 group-hover:text-[var(--saffron)] transition-colors"
+          style={{ fontFamily: "var(--font-heading)", color: "var(--text-primary)" }}
+        >
           {preset.name}
         </h3>
-        <p className="text-sm text-gray-500">{preset.description}</p>
+        <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+          {preset.description}
+        </p>
 
-        <div className="mt-4 flex items-center text-blue-700 text-sm font-medium">
-          <span>Resize Photo</span>
+        <div className="mt-3 flex items-center text-xs font-semibold group-hover:gap-2 transition-all" style={{ color: "var(--saffron)", gap: "4px" }}>
+          <span>Resize</span>
           <svg
-            className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
+            className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -38,7 +48,7 @@ export default function DocumentCard({ preset }: Props) {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={2.5}
               d="M9 5l7 7-7 7"
             />
           </svg>
