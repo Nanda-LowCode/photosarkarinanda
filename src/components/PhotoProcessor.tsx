@@ -7,8 +7,6 @@ type Props = { preset: Preset };
 type CropBox = { x: number; y: number; w: number; h: number };
 type BgStatus = "idle" | "loading-model" | "removing" | "ready" | "error" | "unsupported";
 type FaceStatus = "idle" | "loading" | "detected" | "not-found" | "error";
-type CropMode = "strict" | "portrait" | "full" | "pad" | "manual";
-type ComplianceIssue = { severity: "error" | "warning" | "success"; message: string };
 
 const PREVIEW_SIZE = 380;
 
@@ -35,7 +33,6 @@ export default function PhotoProcessor({ preset }: Props) {
   const [outputKB, setOutputKB] = useState<number | null>(null);
   const [hasImage, setHasImage] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [, setComplianceIssues] = useState<ComplianceIssue[] | null>(null);
   const [finalBlobUrl, setFinalBlobUrl] = useState<string | null>(null);
 
   // AI background removal
@@ -57,7 +54,6 @@ export default function PhotoProcessor({ preset }: Props) {
   const [faceStatus, setFaceStatus] = useState<FaceStatus>("idle");
   const faceModelLoaded = useRef(false);
   const faceBoxRef = useRef<{ x: number; y: number; w: number; h: number } | null>(null);
-  const [, setCropMode] = useState<CropMode>("strict");
 
   // Print sheet data URL (set after each successful download)
   const lastDataUrlRef = useRef<string | null>(null);
@@ -135,51 +131,11 @@ export default function PhotoProcessor({ preset }: Props) {
   );
 
   const applySmartCrop = useCallback(
-    (mode: CropMode) => {
+    (mode: "strict" | "portrait") => {
       const faceBox = faceBoxRef.current;
       const canvas = previewCanvasRef.current;
       const srcImg = displayImgRef.current;
-      if (!canvas || !srcImg) return;
-
-      if (mode === "full") {
-        // Fit the absolute largest crop box that preserves the target aspect ratio
-        const ar = preset.width / preset.height;
-        let w: number, h: number;
-        if (canvas.width / canvas.height > ar) {
-          h = canvas.height;
-          w = h * ar;
-        } else {
-          w = canvas.width;
-          h = w / ar;
-        }
-        cropRef.current = { x: (canvas.width - w) / 2, y: (canvas.height - h) / 2, w, h };
-        setCropMode("full");
-        setFinalBlobUrl(null);
-        setComplianceIssues(null);
-        drawPreview();
-        return;
-      }
-
-      if (mode === "pad") {
-        const ar = preset.width / preset.height;
-        let w: number, h: number;
-        // We want the entire canvas INSIDE the crop box (padding)
-        if (canvas.width / canvas.height > ar) {
-          w = canvas.width;
-          h = w / ar;
-        } else {
-          h = canvas.height;
-          w = h * ar;
-        }
-        cropRef.current = { x: (canvas.width - w) / 2, y: (canvas.height - h) / 2, w, h };
-        setCropMode("pad");
-        setFinalBlobUrl(null);
-        setComplianceIssues(null);
-        drawPreview();
-        return;
-      }
-
-      if (!faceBox) return;
+      if (!canvas || !srcImg || !faceBox) return;
 
       const { x: fx, y: fy, w: fw, h: fh } = faceBox;
       let targetH, targetW;
@@ -214,7 +170,6 @@ export default function PhotoProcessor({ preset }: Props) {
       const ch = Math.min(targetH, canvas.height - cy);
 
       cropRef.current = { x: cx, y: cy, w: cw, h: ch };
-      setCropMode(mode);
       drawPreview();
     },
     [preset.width, preset.height, initCrop, drawPreview]
@@ -355,12 +310,10 @@ export default function PhotoProcessor({ preset }: Props) {
       setBgTime(null);
       setShowingOriginal(false);
       setFaceStatus("idle");
-      setComplianceIssues(null);
       setFinalBlobUrl(null);
       processedImgRef.current = null;
       lastDataUrlRef.current = null;
       faceBoxRef.current = null;
-      setCropMode("strict");
 
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -388,8 +341,6 @@ export default function PhotoProcessor({ preset }: Props) {
             boxH = ch; boxW = boxH * ar;
           }
           cropRef.current = { x: (cw - boxW) / 2, y: (ch - boxH) / 2, w: boxW, h: boxH };
-          
-          setCropMode("pad");
           setHasImage(true);
           drawPreview();
           if (preset.category === "photo") {
@@ -457,7 +408,6 @@ export default function PhotoProcessor({ preset }: Props) {
     if (pos.x >= x && pos.x <= x + w && pos.y >= y && pos.y <= y + h) {
       dragState.current = { active: true, startX: pos.x, startY: pos.y, origCrop: { x, y, w, h } };
       setFinalBlobUrl(null);
-      setComplianceIssues(null);
     }
   }, []);
 
@@ -477,7 +427,6 @@ export default function PhotoProcessor({ preset }: Props) {
         x: Math.max(minX, Math.min(maxX, origCrop.x + pos.x - startX)),
         y: Math.max(minY, Math.min(maxY, origCrop.y + pos.y - startY)),
       };
-      setCropMode("manual");
       drawPreview();
     },
     [drawPreview]
@@ -491,8 +440,8 @@ export default function PhotoProcessor({ preset }: Props) {
     const md = (e: MouseEvent) => onPointerDown(e.clientX, e.clientY);
     const mm = (e: MouseEvent) => onPointerMove(e.clientX, e.clientY);
     const mu = () => onPointerUp();
-    const ts = (e: TouchEvent) => { e.preventDefault(); onPointerDown(e.touches[0].clientX, e.touches[0].clientY); };
-    const tm = (e: TouchEvent) => { e.preventDefault(); onPointerMove(e.touches[0].clientX, e.touches[0].clientY); };
+    const ts = (e: TouchEvent) => { onPointerDown(e.touches[0].clientX, e.touches[0].clientY); if (dragState.current.active) e.preventDefault(); };
+    const tm = (e: TouchEvent) => { if (!dragState.current.active) return; e.preventDefault(); onPointerMove(e.touches[0].clientX, e.touches[0].clientY); };
     const te = () => onPointerUp();
     canvas.addEventListener("mousedown", md);
     window.addEventListener("mousemove", mm);
@@ -573,50 +522,11 @@ export default function PhotoProcessor({ preset }: Props) {
 
       const blob = await compressToTargetKB(out, preset.maxKB);
       const finalKB = Math.round(blob.size / 1024);
-      
-      const ctxToAnalyze = out.getContext("2d")!;
-      const imgData = ctxToAnalyze.getImageData(0, 0, out.width, out.height);
-      const data = imgData.data;
-
-      const issues: ComplianceIssue[] = [];
-
-      let totalBrightness = 0;
-      for (let i = 0; i < data.length; i += 4) {
-        totalBrightness += 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
-      }
-      const avgBrightness = totalBrightness / (data.length / 4);
-      if (avgBrightness < 80) issues.push({ severity: "warning", message: "Photo appears too dark. Improve lighting if possible." });
-      if (avgBrightness > 240) issues.push({ severity: "warning", message: "Photo appears heavily overexposed." });
-
-      if (preset.bgColor === "#FFFFFF" && !isCleanSignature) {
-        let cornerBrightness = 0;
-        let cornerPixels = 0;
-        const s = Math.floor(Math.min(out.width, out.height) * 0.1);
-        for (let y = 0; y < s; y++) {
-          for (let x = 0; x < s; x++) {
-            const i = (y * out.width + x) * 4;
-            cornerBrightness += (data[i] + data[i + 1] + data[i + 2]) / 3;
-            cornerPixels++;
-          }
-        }
-        if (cornerBrightness / cornerPixels < 230) {
-          issues.push({ severity: "warning", message: "Background may not be white enough for this specific portal." });
-        }
-      }
-
-      if (finalKB > preset.maxKB) {
-        issues.push({ severity: "error", message: `File size incredibly cannot be compressed under ${preset.maxKB} KB without severe distortion.` });
-      }
-
-      if (issues.length === 0) {
-        issues.push({ severity: "success", message: "All automatic checks passed!" });
-      }
 
       lastDataUrlRef.current = out.toDataURL("image/jpeg", 0.92);
       setOutputKB(finalKB);
       const blobUrl = URL.createObjectURL(blob);
       setFinalBlobUrl(blobUrl);
-      setComplianceIssues(issues);
 
       // Auto-download immediately — user should not need a second click
       const a = document.createElement("a");
@@ -696,14 +606,12 @@ export default function PhotoProcessor({ preset }: Props) {
     setBgTime(null);
     setShowingOriginal(false);
     setFaceStatus("idle");
-    setComplianceIssues(null);
     setFinalBlobUrl(null);
     displayImgRef.current = null;
     originalImgRef.current = null;
     processedImgRef.current = null;
     lastDataUrlRef.current = null;
     faceBoxRef.current = null;
-    setCropMode("strict");
     dragState.current = { active: false, startX: 0, startY: 0, origCrop: { x: 0, y: 0, w: 0, h: 0 } };
     if (fileInputRef.current) fileInputRef.current.value = "";
   }, []);
@@ -758,7 +666,7 @@ export default function PhotoProcessor({ preset }: Props) {
           <button
             role="switch"
             aria-checked={isCleanSignature}
-            onClick={() => { setIsCleanSignature((v) => !v); setFinalBlobUrl(null); setComplianceIssues(null); }}
+            onClick={() => { setIsCleanSignature((v) => !v); setFinalBlobUrl(null); }}
             className={`relative flex-shrink-0 w-11 h-6 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
               isCleanSignature ? "bg-purple-600" : "bg-gray-300"
             }`}
